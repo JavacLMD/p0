@@ -9,5 +9,10 @@ This app is for employees to register customers and all their pets into a databa
     - will retrieve/create database
     - will retrieve/create tables
     - add/remove data respectively per customer/pets
-    
-  
+ - Future Features:
+    - Appointment records
+    - Vaccination records
+    - Update records
+
+## Requirements
+- sqlite
