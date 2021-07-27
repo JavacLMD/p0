@@ -1,3 +1,7 @@
+# Ignore Folders
 .idea/
 target/
+bin/
+
+# Ignore Files
 
