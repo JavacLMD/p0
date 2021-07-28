@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class PetManagement {
 
-    public static void main(String[] args) {
+    public static void main(String ...args) {
 
         try {
             Connection connection = CustomerDatabase.connect();
@@ -22,7 +22,7 @@ public class PetManagement {
                     System.out.println("| <> q = quit                                    |");
                     System.out.println("| <> add = insert customer                       |");
                     System.out.println("| <> remove = remove customer                    |");
-                    System.out.println("| <> search = search customer                    |");
+                    System.out.println("| <> searchName = search customers by name       |");
                     System.out.println("| <> printAll - list all customers               |");
                     System.out.println("--------------------------------------------------\n");
 
@@ -35,7 +35,7 @@ public class PetManagement {
                         addCustomer(connection, input);
                     } else if (consoleInput.equalsIgnoreCase("remove")) {
                         removeCustomer(connection, input);
-                    } else if (consoleInput.equalsIgnoreCase("search")) {
+                    } else if (consoleInput.equalsIgnoreCase("searchName")) {
                         ResultSet set = searchCustomersByName(connection, input);
                         printResultSet(set);
                     }
