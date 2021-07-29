@@ -1,2 +1,7 @@
-package domain;public enum Gender {
+package domain;
+
+public enum Gender {
+    Male,
+    Female,
+    Unspecified,
 }
