@@ -1,30 +1,25 @@
-import domain.Customer;
-import domain.Database;
-import domain.Pet;
-
-import java.sql.Statement;
-import java.sql.SQLException;
-import java.sql.ResultSet;
-import java.util.*;
-
+import com.github.JavacLMD.projectZero.Context;
+import com.github.JavacLMD.projectZero.Customer;
+import com.github.JavacLMD.projectZero.Database;
 
 public class PetManagement {
     private static Database database;
 
     public static void main(String[] args) {
 
-        database = Database.create(args[0]);
+        String url = "jdbc:mysql://localhost:3306";
+        String username = "root";
+        String password = "";
 
+        Context context = new Context("-d", url);
 
-        ArrayList<Customer> customers = database.getCustomers();
-
-        for (Customer c : customers) {
-
+        for (Customer c : context.customers.values()) {
             System.out.println(c);
-
         }
 
 
     }
+
+
 
 }
