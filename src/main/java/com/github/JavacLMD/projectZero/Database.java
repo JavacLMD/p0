@@ -71,13 +71,12 @@ public class Database {
         return getConnection().createStatement();
     }
 
-
     //Closes the existing connection if it's active
     public void disconnect() {
         try {
             this.connection.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 

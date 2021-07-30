@@ -24,7 +24,7 @@ public class Config {
                 case "-p":
                     props.setProperty("password", args[++i]);
                     break;
-                case "--dburl":
+                case "--database":
                 case "-d":
                     props.setProperty("url", args[++i]);
                     break;

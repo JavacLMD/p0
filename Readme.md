@@ -2,17 +2,43 @@
 This app is for employees to register customers and all their pets into a database. This application will take in the customer's name and phone number along with information about their pet(s): name, breed, description of likes.
 
 ## Actors / Features
- - The employee can 
-    - input customer's name and phone number
-    - add/remove pet's name, breed, description per customer basis
- - The application:
-    - will retrieve/create database
-    - will retrieve/create tables
-    - add/remove data respectively per customer/pets
- - Future Features:
-    - Appointment records
-    - Vaccination records
-    - Update records
+
+- User Can:
+  - Insert Customers to database
+      - <span style="color: #ad0606">Must Include:</span>
+        - First Name
+        - Last Name
+        - Email Address (HAS TO BE UNIQUE)
+        - Phone Number
+      - <span style="color: #06ad25">Optional:</span>
+        - Gender (will default to 'Unspecified')
+        - Address
+        - City
+        - State
+        - Postal Code
+  - Remove Customers from database
+  - Add Pets into database
+     - Must have associated customer
+     - <span style="color: #ad0606">Must Include:</span>
+       - Pet Name
+       - Breed
+       - Gender
+       - Behaviour Description
+     - <span style="color: #06ad25">Optional:</span>
+       - Birth Date
+  - Remove Pets from database
+  - Search Customers
+    - by name
+    - by email
+    - by pet name
+  - Update customer info
+- System will:
+  - Poll all tables (Customers, Pets, Appointments)
+  - Insert Customer
+    - Automatically pass join date
+  - Insert Pet
+    - Automatically pass added date
+    - 
 
 ## Requirements
 - sqlite

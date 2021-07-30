@@ -2,6 +2,8 @@ import com.github.JavacLMD.projectZero.Context;
 import com.github.JavacLMD.projectZero.Customer;
 import com.github.JavacLMD.projectZero.Database;
 
+import java.util.Scanner;
+
 public class PetManagement {
     private static Database database;
 
@@ -11,11 +13,27 @@ public class PetManagement {
         String username = "root";
         String password = "";
 
-        Context context = new Context("-d", url);
+        Context context = new Context("-d", url,"--user", username);
 
-        for (Customer c : context.customers.values()) {
-            System.out.println(c);
+
+        try (Scanner scanner = new Scanner(System.in)) {
+
+            String input;
+            boolean flag = false;
+            while (flag == false) {
+
+                System.out.print("Command >> ");
+                input = scanner.nextLine();
+
+
+            }
+
+
+        } catch (Exception e) {
+
         }
+
+
 
 
     }
