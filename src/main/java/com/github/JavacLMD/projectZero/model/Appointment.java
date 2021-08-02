@@ -1,4 +1,4 @@
-package com.github.JavacLMD.projectZero;
+package com.github.JavacLMD.projectZero.model;
 
 import java.sql.Date;
 import java.sql.Time;

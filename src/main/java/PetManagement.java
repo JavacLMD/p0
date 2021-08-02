@@ -1,43 +1,70 @@
+import com.github.JavacLMD.projectZero.Config;
 import com.github.JavacLMD.projectZero.Context;
-import com.github.JavacLMD.projectZero.Customer;
-import com.github.JavacLMD.projectZero.Database;
+import com.github.JavacLMD.projectZero.controller.IAccessor;
+import com.github.JavacLMD.projectZero.model.Customer;
+import com.github.JavacLMD.projectZero.model.Pet;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class PetManagement {
-    private static Database database;
 
     public static void main(String[] args) {
 
-        String url = "jdbc:mysql://localhost:3306";
-        String username = "root";
-        String password = "";
+        Context context = new Context(args);
+        Config config = context.getAppConfig();
+        IAccessor data = context.getData();
 
-        Context context = new Context("-d", url,"--user", username);
+        System.out.println("-------------------------------------------------------------");
+        if (config.doCustomerSearch()) {
+            List<Customer> customers = new ArrayList<>();
 
+            String customerName = config.getCustomerName();
+            String email = config.getCustomerEmail();
 
-        try (Scanner scanner = new Scanner(System.in)) {
-
-            String input;
-            boolean flag = false;
-            while (flag == false) {
-
-                System.out.print("Command >> ");
-                input = scanner.nextLine();
-
-
+            if (customerName != null && customerName.isEmpty() == false) {
+                customers = data.getCustomersByName(customerName.split(" "));
+            } else if (email != null && email.isEmpty() == false) {
+                customers.add(data.getCustomerByEmail(email));
+            } else {
+                customers = data.getAllCustomers();
             }
 
-
-        } catch (Exception e) {
-
+            for (Customer c : customers) {
+                System.out.println(c);
+            }
+            System.out.println("-------------------------------------------------------------");
         }
 
+        if (config.doPetSearch()) {
+            List<Pet> pets = new ArrayList<>();
+            String petName = config.getPetName();
+            String email = config.getCustomerEmail();
+            int petID = config.getPetID();
 
+            if (petName != null && petName.isEmpty() == false) {
+                pets = data.getPetsByName(petName);
+            } else if (email != null && email.isEmpty() == false) {
+                pets = data.getPetsByCustomer(data.getCustomerByEmail(email));
+            } else if (petID > -1) {
+                pets.add(data.getPetByID(petID));
+            } else {
+                pets = data.getAllPets();
+            }
+
+            for (Pet p : pets) {
+                System.out.println(p);
+            }
+            System.out.println("-------------------------------------------------------------");
+        }
 
 
     }
 
+    private static void printCustomers(List<Customer> list) {
+
+    }
 
 
 }

@@ -1,12 +1,11 @@
-package com.github.JavacLMD.projectZero;
+package com.github.JavacLMD.projectZero.model;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.Date;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
+
 
 public class Customer {
     private static final Logger log = LogManager.getLogger(Customer.class);
@@ -26,11 +25,13 @@ public class Customer {
     private String state;
     private String postalCode;
 
-    private Set<Pet> allPets = new HashSet<>();
-
     public Customer(Integer id, String firstName, String lastName, String emailAddress, String phoneNumber, Date joinDate) {
         this(id, firstName, lastName, emailAddress, phoneNumber, joinDate,
                 Gender.Unspecified, "","","","");
+    }
+
+    public Customer(String firstName, String lastName, String emailAddress, String phoneNumber, Gender gender, String address, String city, String state, String postalCode) {
+        this (-1, firstName, lastName, emailAddress, phoneNumber, new Date(System.currentTimeMillis()), gender, address, city, state, postalCode);
     }
 
     public Customer(Integer id, String firstName, String lastName, String emailAddress, String phoneNumber, Date joinDate, Gender gender, String address, String city, String state, String postalCode) {
@@ -47,6 +48,7 @@ public class Customer {
         this.postalCode = postalCode;
     }
 
+    public int getCustomerID() { return this.id; }
 
     public String getFirstName() {
         return firstName;
@@ -120,25 +122,6 @@ public class Customer {
         this.postalCode = postalCode;
     }
 
-    public Set<Pet> getAllPets() {
-        return allPets;
-    }
-
-    public void setAllPets(Set<Pet> allPets) {
-        this.allPets = allPets;
-    }
-
-    public boolean addPet(Pet pet) {
-        boolean flag = false;
-        if (!allPets.contains(pet)) {
-            flag = allPets.add(pet);
-        }
-        if (flag == true)
-            log.debug("Pet: " + pet.getName() + " added to customer: " + this.emailAddress);
-        else
-            log.warn("Pet: " + pet.getName() + " wasn't added to customer: " + this.emailAddress);
-        return flag;
-    }
 
     @Override
     public String toString() {
@@ -153,18 +136,6 @@ public class Customer {
                 '}';
     }
 
-    public boolean removePet(Pet pet) {
-        boolean flag = false;
-        if (allPets.contains(pet)) {
-            flag = allPets.remove(pet);
-        }
-        if (flag == true)
-            log.debug("Pet: " + pet.getName() + " removed from customer: " + this.emailAddress);
-        else
-            log.warn("Pet: " + pet.getName() + " couldnt be removed from customer: " + this.emailAddress);
-        return flag;
-
-    }
 
     @Override
     public boolean equals(Object o) {

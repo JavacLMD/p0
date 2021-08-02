@@ -1,0 +1,235 @@
+2021-08-02 09:22:39.385 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 09:22:39.397 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@1ae67cad
+2021-08-02 09:22:39.397 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@1ae67cad
+2021-08-02 10:47:54.012 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 10:47:54.020 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@66fdec9
+2021-08-02 10:47:54.020 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@66fdec9
+2021-08-02 10:48:22.401 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 10:48:22.410 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@66fdec9
+2021-08-02 10:48:22.411 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@66fdec9
+2021-08-02 10:51:33.723 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 10:51:33.730 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@66fdec9
+2021-08-02 10:51:33.731 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@66fdec9
+2021-08-02 10:52:05.781 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 10:52:05.789 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@66fdec9
+2021-08-02 10:52:05.790 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@66fdec9
+2021-08-02 10:53:36.726 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 10:53:36.735 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@66fdec9
+2021-08-02 10:53:36.735 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@66fdec9
+2021-08-02 10:54:10.348 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 10:54:10.356 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@66fdec9
+2021-08-02 10:54:10.356 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@66fdec9
+2021-08-02 11:01:24.698 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 11:01:24.705 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@66fdec9
+2021-08-02 11:01:24.705 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@66fdec9
+2021-08-02 11:01:43.822 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 11:01:43.830 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@66fdec9
+2021-08-02 11:01:43.830 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@66fdec9
+2021-08-02 11:17:13.407 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 11:17:13.414 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 11:17:13.415 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 11:17:13.454 [main] ERROR com.github.JavacLMD.projectZero.controller.Database - java.sql.SQLException: Before start of result set
+2021-08-02 11:19:18.601 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 11:19:18.609 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 11:19:18.609 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 11:19:18.635 [main] ERROR com.github.JavacLMD.projectZero.controller.Database - java.sql.SQLException: Before start of result set
+2021-08-02 11:19:58.043 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 11:19:58.050 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 11:19:58.050 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 11:19:58.079 [main] ERROR com.github.JavacLMD.projectZero.controller.Database - java.sql.SQLException: Before start of result set
+2021-08-02 11:20:35.412 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 11:20:35.420 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 11:20:35.421 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 11:20:35.450 [main] ERROR com.github.JavacLMD.projectZero.controller.Database - java.sql.SQLException: Before start of result set
+2021-08-02 11:22:16.625 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 11:22:16.634 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 11:22:16.634 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 11:22:16.663 [main] ERROR com.github.JavacLMD.projectZero.controller.Database - java.sql.SQLException: Before start of result set
+2021-08-02 11:25:59.785 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 11:25:59.793 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 11:25:59.794 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 11:25:59.818 [main] ERROR com.github.JavacLMD.projectZero.controller.Database - java.sql.SQLException: Before start of result set
+2021-08-02 11:27:19.929 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 11:27:19.937 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 11:27:19.937 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 11:30:10.849 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 11:30:10.857 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 11:30:10.858 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 11:40:36.876 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 11:40:36.886 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 11:40:36.886 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 11:41:00.846 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 11:41:00.854 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 11:41:00.855 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 11:43:56.562 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 11:43:56.569 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 11:43:56.570 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 11:44:22.936 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 11:44:22.944 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 11:44:22.944 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 11:46:22.975 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 11:46:22.983 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 11:46:22.983 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 11:50:37.076 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 11:50:37.086 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 11:50:37.086 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 11:50:37.113 [main] ERROR com.github.JavacLMD.projectZero.controller.Database - java.sql.SQLException: Before start of result set
+2021-08-02 11:53:38.663 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 11:53:38.673 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 11:53:38.673 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 11:53:51.023 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 11:53:51.032 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 11:53:51.033 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 11:59:04.962 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 11:59:04.969 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 11:59:04.970 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 11:59:26.829 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 11:59:26.836 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 11:59:26.837 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 12:00:33.725 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 12:00:33.733 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 12:00:33.733 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 12:00:58.482 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 12:00:58.491 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 12:00:58.492 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 12:01:20.140 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 12:01:20.148 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@66fdec9
+2021-08-02 12:01:20.149 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@66fdec9
+2021-08-02 12:04:40.338 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 12:04:40.346 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@66fdec9
+2021-08-02 12:04:40.346 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@66fdec9
+2021-08-02 12:32:30.210 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 12:32:30.217 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@66fdec9
+2021-08-02 12:32:30.218 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@66fdec9
+2021-08-02 12:42:24.855 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 12:42:24.862 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 12:42:24.863 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 12:47:10.539 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 12:47:10.547 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 12:47:10.548 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 12:48:00.304 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 12:48:00.312 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 12:48:00.313 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 12:51:03.103 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 12:51:03.110 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 12:51:03.110 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 12:51:20.101 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 12:51:20.108 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@2a640157
+2021-08-02 12:51:20.108 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@2a640157
+2021-08-02 12:51:27.950 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 12:51:27.957 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@2a640157
+2021-08-02 12:51:27.957 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@2a640157
+2021-08-02 12:51:58.303 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 12:51:58.311 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@5d8bafa9
+2021-08-02 12:51:58.312 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@5d8bafa9
+2021-08-02 12:52:12.465 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 12:52:12.472 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 12:52:12.472 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 12:52:35.076 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 12:52:35.084 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 12:52:35.085 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 12:53:48.304 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 12:53:48.312 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 12:53:48.312 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 12:54:05.299 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 12:54:05.314 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@35d08e6c
+2021-08-02 12:54:05.315 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@35d08e6c
+2021-08-02 12:57:06.455 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 12:57:06.462 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@584f54e6
+2021-08-02 12:57:06.463 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@584f54e6
+2021-08-02 12:57:28.465 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 12:57:28.473 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 12:57:28.473 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 12:58:02.992 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 12:58:03.000 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 12:58:03.000 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 12:58:14.541 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 12:58:14.549 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 12:58:14.550 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 12:59:47.821 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 12:59:47.829 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@5d8bafa9
+2021-08-02 12:59:47.830 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@5d8bafa9
+2021-08-02 12:59:58.640 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 12:59:58.647 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@5d8bafa9
+2021-08-02 12:59:58.648 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@5d8bafa9
+2021-08-02 13:00:22.871 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 13:00:22.878 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:00:22.879 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:01:05.705 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 13:01:05.713 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:01:05.713 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:01:26.043 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 13:01:26.050 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:01:26.050 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:02:06.262 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 13:02:06.270 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@5d8bafa9
+2021-08-02 13:02:06.271 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@5d8bafa9
+2021-08-02 13:02:19.727 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 13:02:19.735 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@5d8bafa9
+2021-08-02 13:02:19.736 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@5d8bafa9
+2021-08-02 13:04:32.335 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 13:04:32.342 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:04:32.342 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:05:22.686 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 13:05:22.693 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:05:22.694 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:05:44.841 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 13:05:44.848 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:05:44.848 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:07:46.128 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 13:07:46.135 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:07:46.135 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:08:05.450 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 13:08:05.457 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:08:05.458 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:08:17.087 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 13:08:17.094 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:08:17.095 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:08:29.144 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 13:08:29.151 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:08:29.151 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:11:57.899 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 13:11:57.907 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:11:57.907 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:16:10.380 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 13:16:10.387 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:16:10.387 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:16:46.579 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 13:16:46.586 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:16:46.586 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:17:38.101 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 13:17:38.108 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:17:38.109 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:18:20.055 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 13:18:20.063 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:18:20.063 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:19:49.804 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 13:19:49.811 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:19:49.811 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:22:11.748 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 13:22:11.756 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:22:11.756 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:22:30.233 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 13:22:30.240 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:22:30.241 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:43:54.551 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 13:43:54.559 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:43:54.559 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:49:44.026 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 13:49:44.033 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 13:49:44.034 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 14:03:49.236 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 14:03:49.245 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 14:03:49.245 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 14:05:33.687 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 14:05:33.695 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 14:05:33.695 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 14:08:01.448 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 14:08:01.456 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 14:08:01.456 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 14:11:31.713 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 14:11:31.721 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 14:11:31.721 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@52851b44
+2021-08-02 14:11:48.456 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Connection established to jdbc:mysql://localhost:3306/
+2021-08-02 14:11:48.463 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established customer table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67
+2021-08-02 14:11:48.464 [main] DEBUG com.github.JavacLMD.projectZero.controller.Database - Established pet table from connection: com.mysql.cj.jdbc.ConnectionImpl@57abad67

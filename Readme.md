@@ -17,6 +17,11 @@ This app is for employees to register customers and all their pets into a databa
         - State
         - Postal Code
   - Remove Customers from database
+  - Search Customers
+    - By name
+    - By email
+    - By associated pet name ? 
+    - Update customer info
   - Add Pets into database
      - Must have associated customer
      - <span style="color: #ad0606">Must Include:</span>
@@ -27,11 +32,6 @@ This app is for employees to register customers and all their pets into a databa
      - <span style="color: #06ad25">Optional:</span>
        - Birth Date
   - Remove Pets from database
-  - Search Customers
-    - by name
-    - by email
-    - by pet name
-  - Update customer info
 - System will:
   - Poll all tables (Customers, Pets, Appointments)
   - Insert Customer
