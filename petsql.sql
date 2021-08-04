@@ -7,15 +7,14 @@ CREATE TABLE IF NOT EXISTS customers (
             CustomerID INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT, 
             FirstName VARCHAR(50) NOT NULL, 
             LastName VARCHAR(50) NOT NULL, 
-            EmailAddress VARCHAR(100) NOT NULL,
+            EmailAddress VARCHAR(100) NOT NULL UNIQUE,
             PhoneNumber VARCHAR(15), 
-            JoinedDate DATE DEFAULT now(), 
+            JoinDate DATE DEFAULT now(), 
             Gender ENUM('Unspecified', 'Male', 'Female', 'Other') DEFAULT 'Unspecified', 
             Address VARCHAR(255), 
             City VARCHAR(50), 
             State VARCHAR(50), 
-            PostalCode VARCHAR(15), 
-            UNIQUE (EmailAddress)
+            PostalCode VARCHAR(15)
             );
 CREATE TABLE IF NOT EXISTS pets (
             PetID INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT, 
@@ -51,7 +50,13 @@ update customers
 set PhoneNumber = '999-999-9999'
 where CustomerID = 2;
 
+
+
+
+
 select * from customers;
+select * from pets;
+
 select * from pets where CustomerID = (select CustomerID from customers where EmailAddress = "dorscherl@gmail.com");
 select * from pets where CustomerID = (select CustomerID from customers where EmailAddress = "kring@live.com");
 
