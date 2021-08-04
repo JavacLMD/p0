@@ -27,7 +27,7 @@ public class CommandInterface implements Interface{
 
         boolean flag = true;
         do {
-            String[] commands = {"Search", "Select", "Quit"};
+            String[] commands = {"Search", "Select", "Add", "Remove","Quit"};
             String input = promptMenu("Please type a command:", commands).toLowerCase();
 
             switch (input) {
@@ -38,10 +38,29 @@ public class CommandInterface implements Interface{
                     doSelect();
                     break;
                 case "add": //add customer
-
+                    addCustomer();
                     break;
                 case "remove": //remove customer
 
+                    selectedCustomer = null;
+                    selectCustomer();
+
+                    //warn the user of deletion
+                    System.out.println("This will delete all associated entries!");
+                    //get confirmation
+                    if (inputConfirmation("Are you sure you want to delete the selected customer?")) {
+                        //attempt to remove the customer
+                        boolean success = dataAccessor.removeCustomer(this.selectedCustomer.getCustomerID());
+                        //if successful, "deselect" the customer and pet
+                        if (success) {
+                            System.out.println("Customer " + " " + this.selectedCustomer.getEmailAddress() + " deleted.");
+                            this.selectedCustomer = null;
+                            selectedPet = null;
+                        } else {
+                            System.out.println("Customer " + this.selectedCustomer.getEmailAddress() + " could not be deleted.");
+                            log.error("Could not delete customer " + this.selectedCustomer.getEmailAddress() + "!");
+                        }
+                    }
                     break;
                 case "quit": //quit
                     flag = false;
@@ -50,6 +69,142 @@ public class CommandInterface implements Interface{
         } while (flag);
 
         scanner.close();
+    }
+
+    private void addCustomer() {
+        String[] profileOptions = {"Name", "Email", "Phone Number","Gender", "Address", "Finish"};
+        boolean flag = true;
+        String firstName = null,
+                lastName= null,
+                email= null,
+                phone= null,
+                address= null,
+                city= null,
+                state= null,
+                zip= null,
+                gender= Gender.Unspecified.toString();
+
+        do {
+            String input = promptMenu("What do you want to add?", profileOptions).toLowerCase();
+            switch (input) {
+                case "name":
+                    do {
+                        System.out.print("Please enter first and last name: >>  ");
+                        input = scanner.nextLine();
+                        //separate first and last name to different strings
+                        String[] name = input.split(" ");
+                        boolean caughtException = false;
+                        try {
+                            firstName = name[0];
+                            lastName = name[1];
+                        } catch (ArrayIndexOutOfBoundsException e) {
+                            caughtException = true;
+                            System.out.println("Did not get first and last name! Try again.\n");
+                        }
+
+                        //only confirm input if we got both first and last name
+                        if (caughtException == false) {
+                            flag = false;
+                        }
+                    } while(flag);
+                    flag = true;
+                    break;
+                case "email":
+                    do {
+                        System.out.print("\nPlease enter in new email: >>  ");
+                        input = scanner.nextLine();
+                        System.out.print("Please confirm the new email: >>  ");
+                        email = scanner.nextLine();
+
+                        //do the email entries match
+                        if (input.equalsIgnoreCase(email)) {
+                            //are both entries emails
+                            if (StringUtils.isEmail(input) && StringUtils.isEmail(email)) {
+                                //check if email already exists in registry
+                                Customer check = dataAccessor.getCustomerByEmail(input);
+                                if (check == null) {
+                                    email = input;
+                                    flag = false;
+                                    log.debug("Email " + email + " accepted!");
+                                }
+                            } else {
+                                System.out.println("Input is not valid for email addresses! Try again.");
+                                flag = true;
+                            }
+                        } else {
+                            System.out.println("Emails do not match! Try again.");
+                            flag = true;
+                        }
+
+                    } while(flag);
+                    flag = true;
+                    break;
+                case "phone number":
+                    do {
+                        System.out.print("\nPlease enter phone number: >>  ");
+                        phone = scanner.nextLine();
+
+                        if (phone.toCharArray().length < 15) {
+                            flag = false;
+                        } else {
+                            flag = true;
+                            System.out.println("Phone number too long! Try again.");
+                        }
+                    } while (flag);
+                    flag = true;
+                    break;
+                case "address":
+                    do {
+                        System.out.print("Please enter address: >>  ");
+                        address = scanner.nextLine();
+                    } while (inputConfirmation("Is this the right address? " + address) == false);
+                    do {
+                        System.out.print("Please enter city: >>  ");
+                        city = scanner.nextLine();
+                    } while (inputConfirmation("Is this the right city? " + city) == false);
+                    do {
+                        System.out.print("Please enter state: >>  ");
+                        state = scanner.nextLine();
+                    } while (inputConfirmation("Is this the right state? " + state) == false);
+                    do {
+                        System.out.print("Please enter postal code: >>  ");
+                        zip = scanner.nextLine();
+                    } while (inputConfirmation("Is this the right postal code? " + zip) == false);
+                    break;
+                case "gender":
+                    gender = promptMenu("Please select a gender:", Gender.Male.toString(),
+                            Gender.Female.toString(), Gender.Unspecified.toString(),
+                            Gender.Other.toString());
+                    break;
+                case "finish":
+                    flag = false;
+                    break;
+            }
+
+            System.out.println("\nPlease confirm your profile: " +
+                    "\n First Name: " + firstName +
+                    "\n Last Name: " + lastName +
+                    "\n Email Address: " + email +
+                    "\n Phone Number: " + phone +
+                    "\n Address: " + address +
+                    "\n City: " + city +
+                    "\n State: " + state +
+                    "\n Postal Code: " + zip
+            );
+
+            if (flag) {
+                System.out.println("Type 'Finish' to add customer.");
+            }
+
+        } while(flag);
+
+        Customer customer = new Customer(firstName, lastName, email, phone,
+                Gender.valueOf(gender), address,city,state,zip);
+
+        if (dataAccessor.addCustomer(customer)) {
+            System.out.println(firstName + " " + lastName + " successfully added!");
+            selectedCustomer = dataAccessor.getCustomerByEmail(customer.getEmailAddress());
+        }
     }
 
     private void doSearch() {

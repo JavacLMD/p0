@@ -425,3 +425,19 @@
 2021-08-03 21:50:01.599 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Exit
 2021-08-03 21:50:01.599 [main] INFO  com.github.JavacLMD.projectZero.view.CommandInterface - Exited Select Function!
 2021-08-03 21:50:02.445 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Quit
+2021-08-03 22:12:27.289 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Add
+2021-08-03 22:12:31.285 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Name
+2021-08-03 22:14:12.872 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Email
+2021-08-03 22:14:29.541 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Email romerog@outlook.com accepted!
+2021-08-03 22:14:33.421 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Phone Number
+2021-08-03 22:14:44.399 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Gender
+2021-08-03 22:14:46.657 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Male
+2021-08-03 22:14:51.022 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Finish
+2021-08-03 22:15:08.529 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Search
+2021-08-03 22:15:10.706 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Customers
+2021-08-03 22:15:24.874 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Exit
+2021-08-03 22:15:24.874 [main] INFO  com.github.JavacLMD.projectZero.view.CommandInterface - Exited Search Function!
+2021-08-03 22:15:30.638 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Remove
+2021-08-03 22:15:36.661 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - User selected 'Yes' to Are you sure you want to delete the selected customer?
+2021-08-03 22:15:42.670 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Search
+2021-08-03 22:15:44.432 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Customers
