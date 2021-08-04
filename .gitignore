@@ -4,4 +4,5 @@ target/
 bin/
 
 # Ignore Files
-PetManagement.iml
+*.iml
+*.sql

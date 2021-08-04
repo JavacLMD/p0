@@ -42,17 +42,16 @@ VALUES
 (1, "Pippin", "Male", "Calm, nosy dog. Loves attention. Will play-bite hand if he thinks youre trying to play (Never hard)."),
 (1, "Buddy", "Unspecified", "Loving bird, loves singing and flying around. Prefers high ledges away from animals."),
 (3, "Sadie", "Female", "energetic pitbull, loves butt pets and being the center of attention. Hates conflict"),
-(3, "Chuck", "Male", "always gets in your face to let you know to pet him");
+(3, "Chuck", "Male", "always gets in your face to let you know to pet him"),
+(5, "Dutchess", "Female", "loves to knock things off the counter")
+
+;
 
 select * from customers;
 
 update customers
 set PhoneNumber = '999-999-9999'
 where CustomerID = 2;
-
-
-
-
 
 select * from customers;
 select * from pets;
