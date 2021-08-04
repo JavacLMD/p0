@@ -41,26 +41,7 @@ public class CommandInterface implements Interface{
                     addCustomer();
                     break;
                 case "remove": //remove customer
-
-                    selectedCustomer = null;
-                    selectCustomer();
-
-                    //warn the user of deletion
-                    System.out.println("This will delete all associated entries!");
-                    //get confirmation
-                    if (inputConfirmation("Are you sure you want to delete the selected customer?")) {
-                        //attempt to remove the customer
-                        boolean success = dataAccessor.removeCustomer(this.selectedCustomer.getCustomerID());
-                        //if successful, "deselect" the customer and pet
-                        if (success) {
-                            System.out.println("Customer " + " " + this.selectedCustomer.getEmailAddress() + " deleted.");
-                            this.selectedCustomer = null;
-                            selectedPet = null;
-                        } else {
-                            System.out.println("Customer " + this.selectedCustomer.getEmailAddress() + " could not be deleted.");
-                            log.error("Could not delete customer " + this.selectedCustomer.getEmailAddress() + "!");
-                        }
-                    }
+                    removeCustomer();
                     break;
                 case "quit": //quit
                     flag = false;
@@ -69,6 +50,28 @@ public class CommandInterface implements Interface{
         } while (flag);
 
         scanner.close();
+    }
+
+    private void removeCustomer() {
+        selectedCustomer = null;
+        selectCustomer();
+
+        //warn the user of deletion
+        System.out.println("This will delete all associated entries!");
+        //get confirmation
+        if (inputConfirmation("Are you sure you want to delete the selected customer?")) {
+            //attempt to remove the customer
+            boolean success = dataAccessor.removeCustomer(this.selectedCustomer.getCustomerID());
+            //if successful, "deselect" the customer and pet
+            if (success) {
+                System.out.println("Customer " + " " + this.selectedCustomer.getEmailAddress() + " deleted.");
+                this.selectedCustomer = null;
+                selectedPet = null;
+            } else {
+                System.out.println("Customer " + this.selectedCustomer.getEmailAddress() + " could not be deleted.");
+                log.error("Could not delete customer " + this.selectedCustomer.getEmailAddress() + "!");
+            }
+        }
     }
 
     private void addCustomer() {
