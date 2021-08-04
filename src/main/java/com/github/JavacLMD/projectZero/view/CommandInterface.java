@@ -6,16 +6,14 @@ import com.github.JavacLMD.projectZero.model.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class CommandInterface implements Interface{
     private static final Scanner scanner = new Scanner(System.in);
     private static final Logger log = LogManager.getLogger(CommandInterface.class);
 
-    private DOA dataAccessor;
+    private final DOA dataAccessor;
     private Customer selectedCustomer;
     private Pet selectedPet;
 
@@ -28,22 +26,24 @@ public class CommandInterface implements Interface{
         boolean flag = true;
         do {
             String[] commands = {"Search", "Select", "Add", "Remove","Quit"};
-            String input = promptMenu("Please type a command:", commands).toLowerCase();
+            int command = promptMenu("\nPlease type a command:", commands);
 
-            switch (input) {
-                case "search": //search
+            switch (command) {
+                case 0: //"search": //search
                     doSearch();
                     break;
-                case "select": //select
-                    doSelect();
+                case 1: //"select": //select
+                    promptSelectionMenu();
                     break;
-                case "add": //add customer
-                    addCustomer();
+                case 2: //"add": //add customer
+                    selectedCustomer = promptAddCustomer();
                     break;
-                case "remove": //remove customer
-                    removeCustomer();
+                case 3: //"remove": //remove customer
+                    if (selectedCustomer == null)
+                        selectCustomer();
+                    selectedCustomer = promptRemoveCustomer(selectedCustomer);
                     break;
-                case "quit": //quit
+                default: //quit
                     flag = false;
                     break;
             }
@@ -52,209 +52,83 @@ public class CommandInterface implements Interface{
         scanner.close();
     }
 
-    private void removeCustomer() {
-        selectedCustomer = null;
-        selectCustomer();
-
+    private Customer promptRemoveCustomer(Customer selectedCustomer) {
         //warn the user of deletion
         System.out.println("This will delete all associated entries!");
         //get confirmation
         if (inputConfirmation("Are you sure you want to delete the selected customer?")) {
             //attempt to remove the customer
-            boolean success = dataAccessor.removeCustomer(this.selectedCustomer.getCustomerID());
+            boolean success = dataAccessor.removeCustomer(selectedCustomer.getCustomerID());
             //if successful, "deselect" the customer and pet
             if (success) {
-                System.out.println("Customer " + " " + this.selectedCustomer.getEmailAddress() + " deleted.");
-                this.selectedCustomer = null;
-                selectedPet = null;
+                System.out.println("Customer " + " " + selectedCustomer.getEmailAddress() + " deleted.");
+                selectedCustomer = null;
             } else {
-                System.out.println("Customer " + this.selectedCustomer.getEmailAddress() + " could not be deleted.");
-                log.error("Could not delete customer " + this.selectedCustomer.getEmailAddress() + "!");
+                System.out.println("Customer " + selectedCustomer.getEmailAddress() + " could not be deleted.");
+                log.error("Could not delete customer " + selectedCustomer.getEmailAddress() + "!");
             }
         }
+
+        return selectedCustomer;
     }
 
-    private void addCustomer() {
-        String[] profileOptions = {"Name", "Email", "Phone Number","Gender", "Address", "Finish"};
-        boolean flag = true;
-        String firstName = null,
-                lastName= null,
-                email= null,
-                phone= null,
-                address= null,
-                city= null,
-                state= null,
-                zip= null,
-                gender= Gender.Unspecified.toString();
-
-        do {
-            String input = promptMenu("What do you want to add?", profileOptions).toLowerCase();
-            switch (input) {
-                case "name":
-                    do {
-                        System.out.print("Please enter first and last name: >>  ");
-                        input = scanner.nextLine();
-                        //separate first and last name to different strings
-                        String[] name = input.split(" ");
-                        boolean caughtException = false;
-                        try {
-                            firstName = name[0];
-                            lastName = name[1];
-                        } catch (ArrayIndexOutOfBoundsException e) {
-                            caughtException = true;
-                            System.out.println("Did not get first and last name! Try again.\n");
-                        }
-
-                        //only confirm input if we got both first and last name
-                        if (caughtException == false) {
-                            flag = false;
-                        }
-                    } while(flag);
-                    flag = true;
-                    break;
-                case "email":
-                    do {
-                        System.out.print("\nPlease enter in new email: >>  ");
-                        input = scanner.nextLine();
-                        System.out.print("Please confirm the new email: >>  ");
-                        email = scanner.nextLine();
-
-                        //do the email entries match
-                        if (input.equalsIgnoreCase(email)) {
-                            //are both entries emails
-                            if (StringUtils.isEmail(input) && StringUtils.isEmail(email)) {
-                                //check if email already exists in registry
-                                Customer check = dataAccessor.getCustomerByEmail(input);
-                                if (check == null) {
-                                    email = input;
-                                    flag = false;
-                                    log.debug("Email " + email + " accepted!");
-                                }
-                            } else {
-                                System.out.println("Input is not valid for email addresses! Try again.");
-                                flag = true;
-                            }
-                        } else {
-                            System.out.println("Emails do not match! Try again.");
-                            flag = true;
-                        }
-
-                    } while(flag);
-                    flag = true;
-                    break;
-                case "phone number":
-                    do {
-                        System.out.print("\nPlease enter phone number: >>  ");
-                        phone = scanner.nextLine();
-
-                        if (phone.toCharArray().length < 15) {
-                            flag = false;
-                        } else {
-                            flag = true;
-                            System.out.println("Phone number too long! Try again.");
-                        }
-                    } while (flag);
-                    flag = true;
-                    break;
-                case "address":
-                    do {
-                        System.out.print("Please enter address: >>  ");
-                        address = scanner.nextLine();
-                    } while (inputConfirmation("Is this the right address? " + address) == false);
-                    do {
-                        System.out.print("Please enter city: >>  ");
-                        city = scanner.nextLine();
-                    } while (inputConfirmation("Is this the right city? " + city) == false);
-                    do {
-                        System.out.print("Please enter state: >>  ");
-                        state = scanner.nextLine();
-                    } while (inputConfirmation("Is this the right state? " + state) == false);
-                    do {
-                        System.out.print("Please enter postal code: >>  ");
-                        zip = scanner.nextLine();
-                    } while (inputConfirmation("Is this the right postal code? " + zip) == false);
-                    break;
-                case "gender":
-                    gender = promptMenu("Please select a gender:", Gender.Male.toString(),
-                            Gender.Female.toString(), Gender.Unspecified.toString(),
-                            Gender.Other.toString());
-                    break;
-                case "finish":
-                    flag = false;
-                    break;
-            }
-
-            System.out.println("\nPlease confirm your profile: " +
-                    "\n First Name: " + firstName +
-                    "\n Last Name: " + lastName +
-                    "\n Email Address: " + email +
-                    "\n Phone Number: " + phone +
-                    "\n Address: " + address +
-                    "\n City: " + city +
-                    "\n State: " + state +
-                    "\n Postal Code: " + zip
-            );
-
-            if (flag) {
-                System.out.println("Type 'Finish' to add customer.");
-            }
-
-        } while(flag);
-
-        Customer customer = new Customer(firstName, lastName, email, phone,
-                Gender.valueOf(gender), address,city,state,zip);
+    private Customer promptAddCustomer() {
+        Customer customer = promptCustomerInfo("What do you want to add?", null);
+        String name = customer.getFirstName() + " " + customer.getLastName();
 
         if (dataAccessor.addCustomer(customer)) {
-            System.out.println(firstName + " " + lastName + " successfully added!");
-            selectedCustomer = dataAccessor.getCustomerByEmail(customer.getEmailAddress());
-        }
+            log.info(name + " successfully added!");
+            customer = dataAccessor.getCustomerByEmail(customer.getEmailAddress());
+        } else
+            log.error("Customer wasn't added!");
+
+        return customer;
     }
 
     private void doSearch() {
         String[] searchArgs = {"Customers", "Pets", "Exit"};
         boolean flag = true;
+        while (flag) {
+            int command = promptMenu("What do you want to search?", searchArgs);
+            switch (command) {
 
-        do {
-            String input = promptMenu("What do you want to search?", searchArgs).toLowerCase();
-            switch (input) {
-
-                case "customers":
-                    searchCustomers();
+                case 0: //"customers":
+                    promptSearchCustomers();
                     break;
-                case "pets":
+                case 1: //"pets":
                     searchPets();
                     break;
-                case "exit":
+                default: //"exit":
                     log.info("Exited Search Function!");
                     flag = false;
                     break;
             }
-        } while (flag);
+        }
     }
 
-    private void doSelect() {
+    private void promptSelectionMenu() {
         String[] searchArgs = {"Customers", "Pets", "Exit"};
         boolean flag = true;
 
-        do {
-            String input = promptMenu("What do you want to select?", searchArgs).toLowerCase();
-            switch (input) {
-                case "customers":
-                    doCustomerSelect();
+        while (flag) {
+            int command = promptMenu("What do you want to select?", searchArgs);
+            switch (command) {
+                case 0: //"customers":
+                    handleCustomerSelection();
                     break;
-                case "pets":
-                    doPetSelect();
+                case 1: //"pets":
+                    handlePetSelection();
                     break;
-                case "exit":
+                default: //"exit":
                     log.info("Exited Select Function!");
                     flag = false;
                     break;
             }
-        } while (flag);
+        }
     }
 
-    private void doPetSelect() {
-        selectPet();
+    private void handlePetSelection() {
+        selectedPet = promptPetSelection();
         if (selectedPet == null) {
             System.out.println("Pet not selected!");
             log.error("Pet not selected!");
@@ -263,58 +137,57 @@ public class CommandInterface implements Interface{
 
         String[] args = {"Update Pet", "Delete Pet", "Print", "Exit" };
 
-        boolean selectionFlag = true;
-        do {
-            String command = promptMenu("Please type a command:", args).toLowerCase();
+        boolean flag = true;
+        while(flag) {
+            int command = promptMenu("Please type a command:", args);
             switch (command) {
-                case "update pet":
-                    updatePet();
+                case 0: //"update pet":
+                    selectedPet = promptUpdatePet(selectedPet);
                     break;
-                case "delete pet":
-                    if (deletePet()) return;
+                case 1: //"delete pet":
+                    selectedPet = promptPetDeletion(selectedPet);
                     break;
-                case "print":
-                    ArrayList<Pet> pet = new ArrayList<>();
-                    pet.add(selectedPet);
-                    printPetList(pet);
+                case 2: //"print":
+                    if (selectedPet != null)
+                        printPets(selectedPet);
                     break;
-                case "exit":
-                    selectionFlag = false;
+                default: //exit
+                    flag = false;
                     break;
             }
-        } while(selectionFlag);
+        }
     }
 
-    private boolean deletePet() {
+    private Pet promptPetDeletion(Pet selectedPet) {
+        String petName = selectedPet.getName();
+        int petID = selectedPet.getPetID();
+
         //warn the user of deletion
         System.out.println("This will delete the pet!");
         //get confirmation
         if (inputConfirmation("Are you sure you want to delete the selected pet?")) {
             //attempt to remove the customer
-            boolean success = dataAccessor.removePet(this.selectedPet.getPetID());
-            //if successful, "deselect" the customer and pet
+            boolean success = dataAccessor.removePet(petID);
+
             if (success) {
-                System.out.println("Pet " + " " + this.selectedPet.getName() + " deleted.");
-                selectedPet = null;
-                return true;
+                log.info("Pet: " + petID + ": " + petName + " deleted.");
+                selectedPet = null; //return null since pet no longer exists
             } else {
-                System.out.println("Pet " + " " + this.selectedPet.getName() + " could not be deleted.");
-                log.error("Could not delete Pet " + this.selectedPet.getName() + "!");
-                return false;
+                log.error("Pet " + petID + ": " + petName + " could not be deleted.");
             }
         }
-        return false;
+        return selectedPet;
     }
 
-    private Pet selectPet() {
+    //select any pet with id
+    private Pet promptPetSelection() {
         if (selectedPet != null) {
-            StringBuilder sb = new StringBuilder();
-            sb.append("Pet: ");
-            sb.append(selectedPet.getName());
-            sb.append(" is selected!");
+            String sb = "Pet: " +
+                    selectedPet.getName() +
+                    " is selected!";
 
-            System.out.println("Pet " + sb.toString());
-            if (inputConfirmation("Do you wish to select a new pet?") == false) {
+            System.out.println("Pet " + sb);
+            if (!inputConfirmation("Do you wish to select a new pet?")) {
                 log.debug("User kept current selection");
                 return selectedPet;
             }
@@ -322,7 +195,7 @@ public class CommandInterface implements Interface{
 
         boolean flag = true;
         do {
-            System.out.print("Please type in id or [exit] to exit >> ");
+            System.out.print("Please type in id or 'exit' to cancel >> ");
             String input = scanner.nextLine().toLowerCase();
 
             if (StringUtils.isInteger(input)) {
@@ -335,75 +208,83 @@ public class CommandInterface implements Interface{
             else System.out.println("Invalid entry! Try again!");
         } while (flag);
 
+        printPets(selectedPet);
+
         return selectedPet;
     }
 
-    private void updatePet() {
-        String[] profileOptions = {"Name", "Breed", "Gender","Behaviour", "Behavior", "Finish"};
-        boolean flag = true;
+    private Pet promptUpdatePet(Pet selectedPet) {
+        Pet pet = promptPetInfo("What do you want to update?", selectedPet);
+        if (selectedPet != null) {
 
-        String name = selectedPet.getName(),
-                breed= selectedPet.getBreed(),
-                gender= selectedPet.getGender().toString(),
-                behaviourDescription = selectedPet.getBehaviourDescription();
+            selectedPet.setName(pet.getName());
+            selectedPet.setBreed(pet.getBreed());
+            selectedPet.setGender(pet.getGender());
+            selectedPet.setBehaviourDescription(selectedPet.getBehaviourDescription());
 
-        do {
-            String input = promptMenu("What do you want to update?", profileOptions).toLowerCase();
-
-            switch (input) {
-                case "name":
-                    do {
-                        System.out.print("Please enter the name: >>  ");
-                        name = scanner.nextLine();
-                        flag = name.isEmpty();
-                        if (flag) {
-                            System.out.println("Name can't be blank!");
-                        }
-                    } while(flag);
-                    flag = true; //reset flag
-                    break;
-                case "breed":
-                    System.out.print("\nPlease enter the breed: >>  ");
-                    breed = scanner.nextLine();
-                    break;
-                case "gender":
-                    gender = promptMenu("Please select a gender:", Gender.Male.toString(),
-                            Gender.Female.toString(), Gender.Unspecified.toString(),
-                            Gender.Other.toString());
-                    break;
-                case "behaviour":
-                case "behavior":
-                    System.out.print("Please enter the name: >>  ");
-                    behaviourDescription = scanner.nextLine();
-                case "finish":
-                    flag = false;
-                    break;
+            if (dataAccessor.updatePet(selectedPet)) {
+                log.info("Pet profile: " + selectedPet.getName() + " updated successfully!");
             }
-
-            System.out.println("Please confirm the pet's profile: " +
-                    "\n Name: " + name +
-                    "\n Breed: " + breed +
-                    "\n Gender: " + gender +
-                    "\n Behaviour Description: " + behaviourDescription
-            );
-
-            if (flag)
-                System.out.println("Type 'Finish' to update profile\n");
-
-        } while(flag);
-        flag = true;
-
-        selectedPet.setName(name);
-        selectedPet.setBreed(breed);
-        selectedPet.setGender(Gender.valueOf(gender));
-        selectedPet.setBehaviourDescription(behaviourDescription);
-
-        dataAccessor.updatePet(selectedPet);
+        }
+        return selectedPet;
     }
 
+    private Pet promptSelectCustomerPet(Customer selectedCustomer) {
+        ArrayList<Pet> customerPets = dataAccessor.getPetsFromCustomer(selectedCustomer);
+        ArrayList<Integer> associatedIDs = new ArrayList<>();
+        String fullName = selectedCustomer.getFirstName() + " " + selectedCustomer.getLastName();
+
+        if (customerPets.size() == 0 || customerPets.size() == 1 && customerPets.get(0) == null) {
+            System.out.println(fullName + " does not have any pets!");
+            return null;
+        }
+
+        boolean flag = true;
+        do {
+            System.out.println("\nAvailable Pets for " + fullName + ":");
+            associatedIDs.clear();
+            for (Pet x : customerPets)
+            {
+                System.out.println("PetID: " + x.getPetID() + " | Name: " + x.getName());
+                associatedIDs.add(x.getPetID());
+            }
+            System.out.print("\nWhat pet do you want to select? >>  ");
+            String input = scanner.nextLine();
+            int id;
+            if (StringUtils.isInteger(input)) {
+                id = Integer.parseInt(input);
+
+                boolean isAcceptable = false;
+                for (int s : associatedIDs) {
+                    if (s == id) {
+                        isAcceptable = true;
+                        break;
+                    }
+                }
+
+                if (isAcceptable) {
+                    selectedPet = dataAccessor.getPetByID(id);
+                    log.info("Pet " + selectedPet.getName() + " selected from " + fullName + "!");
+                    flag = false;
+                } else {
+                    System.out.println("Id is out of range for " + fullName + "'s pets");
+                }
+            } else if ("exit".equalsIgnoreCase(input)) {
+                log.warn("User exited pet selection for " + fullName);
+                selectedPet = null;
+                flag = false;
+            }
+        } while (flag);
+
+        printPets(selectedPet);
+
+        return selectedPet;
+    }
+
+
     //region Selection Stuff
-    private void doCustomerSelect() {
-        selectCustomer();
+    private void handleCustomerSelection() {
+        selectedCustomer = selectCustomer();
         if (selectedCustomer == null) {
             System.out.println("Customer not selected!");
             log.error("Customer not selected!");
@@ -413,73 +294,31 @@ public class CommandInterface implements Interface{
         boolean selectionFlag = true;
         do {
             String[] args = {"Update Profile", "Delete Profile", "Print Profile", "Print Pets", "Add Pet", "Remove Pet", "Update Pet", "Exit" };
-            String command = promptMenu("Please type a command:", args).toLowerCase();
+            int command = promptMenu("Please type a command:", args);
 
             switch (command) {
-                case "update profile":
-                    updateProfile();
+                case 0: //"update profile":
+                    updateCustomerProfile(selectedCustomer);
                     break;
-                case "delete profile":
-                    if (deleteProfile()) return;
+                case 1: //"delete profile":
+                    selectedCustomer = deleteCustomerProfile(selectedCustomer);
                     break;
-                case "print profile":
-                    ArrayList<Customer> customers = new ArrayList<>();
-                    customers.add(selectedCustomer);
-                    printCustomerList(customers);
+                case 2: //"print profile":
+                    printCustomers(selectedCustomer);
                     break;
-                case "print pets":
-                    printPetsFromCustomer();
+                case 3: //"print pets":
+                    printPetsFromCustomer(selectedCustomer);
                     break;
-                case "add pet":
-                    addPetToCustomer();
+                case 4: //"add pet":
+                    addPetToCustomer(selectedCustomer);
                     break;
-                case "remove pet":
-                    removePetFromCustomer();
+                case 5: //"remove pet":
+                    selectedPet = removePetFromCustomer(selectedCustomer);
                     break;
-                case "update pet":
-
-                    ArrayList<Pet> customerPets = dataAccessor.getPetsFromCustomer(this.selectedCustomer);
-                    ArrayList<Integer> associatedIDs = new ArrayList<>();
-                    String fullname = this.selectedCustomer.getFirstName() + " " + this.selectedCustomer.getLastName();
-
-                    if (customerPets.size() == 0 || customerPets.size() == 1 && customerPets.get(0) == null) {
-                        System.out.println(fullname + " does not have any pets!");
-                        return;
-                    }
-
-                    boolean flag = true;
-                    do {
-                        System.out.println("\nAvailable Pets for " + fullname + ":");
-                        associatedIDs.clear();
-                        for (Pet x : customerPets)
-                        {
-                            System.out.println("PetID: " + x.getPetID() + " | Name: " + x.getName());
-                            associatedIDs.add(x.getPetID());
-                        }
-                        System.out.print("\nWhat pet do you want to update? >>  ");
-                        String input = scanner.nextLine();
-                        int id = -1;
-                        if (StringUtils.isInteger(input)) {
-                            id = Integer.parseInt(input);
-
-                            boolean isAcceptable = false;
-                            for (int s : associatedIDs) {
-                                if (s == id) isAcceptable = true;
-                            }
-
-                            if (isAcceptable) {
-                                selectedPet = dataAccessor.getPetByID(id);
-                                flag = false;
-                            } else {
-                                System.out.println("Id is out of range for " + fullname + "'s pets");
-                            }
-                        } else {
-                            flag = true;
-                        }
-                    } while (flag);
-                    updatePet();
+                case 6: //"update pet":
+                    selectedPet = promptUpdatePet(selectedPet);
                     break;
-                case "exit":
+                default: //exit
                     selectionFlag = false;
                     break;
             }
@@ -489,13 +328,12 @@ public class CommandInterface implements Interface{
 
     private Customer selectCustomer() {
         if (selectedCustomer != null) {
-            StringBuilder sb = new StringBuilder();
-            sb.append("Customer: ");
-            sb.append(selectedCustomer.getFirstName() + " " + selectedCustomer.getLastName());
-            sb.append(" is selected!");
+            String sb = "Customer: " +
+                    selectedCustomer.getFirstName() + " " + selectedCustomer.getLastName() +
+                    " is selected!";
 
-            System.out.println("Customer " + sb.toString());
-            if (inputConfirmation("Do you wish to select a new customer?") == false) {
+            System.out.println("Customer " + sb);
+            if (!inputConfirmation("Do you wish to select a new customer?")) {
                 log.debug("User kept current selection");
                 return selectedCustomer;
             }
@@ -503,14 +341,14 @@ public class CommandInterface implements Interface{
 
         boolean flag = true;
         do {
-            System.out.print("Please type in id or email >> ");
+            System.out.print("Please type in id, email, or 'exit' to cancel >> ");
             String input = scanner.nextLine().toLowerCase();
 
             if (StringUtils.isEmail(input)) {
                 selectedCustomer = dataAccessor.getCustomerByEmail(input);
             } else if (StringUtils.isInteger(input)) {
                 selectedCustomer = dataAccessor.getCustomerByID(Integer.parseInt(input));
-            } else if ("exit".equalsIgnoreCase(input) || "quit".equalsIgnoreCase(input)) {
+            } else if ("exit".equalsIgnoreCase(input) || "quit".equalsIgnoreCase(input) || input.isEmpty()) {
                 return selectedCustomer;
             }
 
@@ -518,297 +356,101 @@ public class CommandInterface implements Interface{
             else System.out.println("Invalid entry! Try again!");
         } while (flag);
 
+        printCustomers(selectedCustomer);
+
         return selectedCustomer;
     }
 
-    private void removePetFromCustomer() {
-        ArrayList<Pet> customerPets = dataAccessor.getPetsFromCustomer(this.selectedCustomer);
-        ArrayList<Integer> associatedIDs = new ArrayList<>();
-        String fullname = this.selectedCustomer.getFirstName() + " " + this.selectedCustomer.getLastName();
-        if (customerPets.size() == 0 || customerPets.size() == 1 && customerPets.get(0) == null) {
-            System.out.println(fullname + " does not have any pets!");
-            return;
+    private Pet removePetFromCustomer(Customer selectedCustomer) {
+        selectedPet = promptSelectCustomerPet(selectedCustomer);
+        String fullName = selectedCustomer.getFirstName() + " " + selectedCustomer.getLastName();
+        System.out.println("Selected pet:");
+        printPets(selectedPet);
+
+        System.out.println();
+        if (inputConfirmation("Are you sure you want to remove the pet?")) {
+
+            if (dataAccessor.removePet(selectedPet.getPetID())) {
+                log.info(selectedPet.getName() + " has been removed from " + fullName + "!");
+                selectedPet = null;
+            } else {
+                log.error(selectedPet.getName() + " could not be deleted from " + fullName + "!");
+            }
+        } else {
+            log.warn(selectedPet.getName() + " is safe from deletion");
         }
 
-        boolean flag = true;
-        do {
-            System.out.println("\nAvailable Pets for " + fullname + ":");
-            associatedIDs.clear();
-            for (Pet x : customerPets)
-            {
-                System.out.println("PetID: " + x.getPetID() + " | Name: " + x.getName());
-                associatedIDs.add(x.getPetID());
-            }
-            System.out.print("\nWhat pet do you want to remove? >>  ");
-            String input = scanner.nextLine();
-            int id = -1;
-            if (StringUtils.isInteger(input)) {
-                id = Integer.parseInt(input);
-
-                boolean isAcceptable = false;
-                for (int s : associatedIDs) {
-                    if (s == id) isAcceptable = true;
-                }
-
-                if (isAcceptable) {
-                    selectedPet = dataAccessor.getPetByID(id);
-                    boolean success = dataAccessor.removePet(id);
-                    if (success) {
-
-                        System.out.println("Removed " + selectedPet.getName() + " from " + fullname);
-                        selectedPet = null;
-                        flag = false;
-                    } else {
-                        System.out.println("Failed to remove " + selectedPet.getName() + " from " + fullname);
-                        if(inputConfirmation("Want to retry deletion?") == false)
-                            flag = false;
-
-                    }
-                } else {
-                    System.out.println("Id is out of range for " + fullname + "'s pets");
-                }
-            } else {
-                flag = true;
-            }
-        } while (flag);
+        return selectedPet;
     }
 
-    private void updateProfile() {
-        String[] profileOptions = {"Name", "Email", "Phone Number","Gender", "Address", "Finish"};
-        boolean flag = true;
+    //updates the selected profile
+    private void updateCustomerProfile(Customer selectedCustomer) {
+        //prevent updating without a selected customer
+        if (selectedCustomer == null) {
+            log.error("Customer not selected!");
+            return; //customer not selected
+        }
 
-        String firstName = selectedCustomer.getFirstName(),
-                lastName= selectedCustomer.getLastName(),
-                email= selectedCustomer.getEmailAddress(),
-                phone= selectedCustomer.getPhoneNumber(),
-                address= selectedCustomer.getAddress(),
-                city= selectedCustomer.getCity(),
-                state= selectedCustomer.getState(),
-                zip= selectedCustomer.getPostalCode(),
-                gender= selectedCustomer.getGender().toString();
+        //create an empty placeholder for the customer's updated info, passing in the original values
+        Customer updatedCustomer = promptCustomerInfo("What do you want to update?", selectedCustomer);
 
-        do {
-            String input = promptMenu("What do you want to update?", profileOptions).toLowerCase();
+        //update the customer's values
+        selectedCustomer.setFirstName(updatedCustomer.getFirstName());
+        selectedCustomer.setLastName(updatedCustomer.getLastName());
+        selectedCustomer.setEmailAddress(updatedCustomer.getEmailAddress());
+        selectedCustomer.setPhoneNumber(updatedCustomer.getPhoneNumber());
+        selectedCustomer.setGender(updatedCustomer.getGender());
+        selectedCustomer.setAddress(updatedCustomer.getAddress());
+        selectedCustomer.setCity(updatedCustomer.getCity());
+        selectedCustomer.setState(updatedCustomer.getState());
+        selectedCustomer.setPostalCode(updatedCustomer.getPostalCode());
 
-            switch (input) {
-                case "name":
-                    do {
-                        System.out.print("Please enter first and last name: >>  ");
-                        input = scanner.nextLine();
-                        //separate first and last name to different strings
-                        String[] name = input.split(" ");
-                        boolean caughtException = false;
-                        try {
-                            firstName = name[0];
-                            lastName = name[1];
-                        } catch (ArrayIndexOutOfBoundsException e) {
-                            caughtException = true;
-                            System.out.println("Did not get first and last name! Try again.\n");
-                        }
-
-                        //only confirm input if we got both first and last name
-                        if (caughtException == false) {
-                            flag = false;
-                        }
-                    } while(flag);
-                    break;
-                case "email":
-                    flag = true;
-                    do {
-
-                        System.out.print("\nPlease enter in new email: >>  ");
-                        input = scanner.nextLine();
-                        System.out.print("Please confirm the new email: >>  ");
-                        email = scanner.nextLine();
-
-                        //do the email entries match
-                        if (input.equalsIgnoreCase(email)) {
-                            //are both entries emails
-                            if (StringUtils.isEmail(input) && StringUtils.isEmail(email)) {
-                                //check if email already exists in registry
-                                Customer check = dataAccessor.getCustomerByEmail(input);
-                                if (check == null || check.equals(selectedCustomer)) {
-                                    email = input;
-                                    flag = false;
-                                    log.debug("Email " + email + " accepted!");
-                                }
-                            } else {
-                                System.out.println("Input is not valid for email addresses! Try again.");
-                                flag = true;
-                            }
-                        } else {
-                            System.out.println("Emails do not match! Try again.");
-                            flag = true;
-                        }
-
-                    } while(flag);
-                    break;
-                case "phone number":
-                    flag = true;
-                    do {
-                        System.out.print("\nPlease enter phone number: >>  ");
-                        phone = scanner.nextLine();
-
-                        if (phone.toCharArray().length < 15) {
-                            flag = false;
-                        } else {
-                            flag = true;
-                            System.out.println("Phone number too long! Try again.");
-                        }
-                    } while (flag);
-                    break;
-                case "address":
-                       do {
-                           System.out.print("Please enter address: >>  ");
-                           address = scanner.nextLine();
-                       } while (inputConfirmation("Is this the right address? " + address) == false);
-                       do {
-                           System.out.print("Please enter city: >>  ");
-                           city = scanner.nextLine();
-                       } while (inputConfirmation("Is this the right city? " + city) == false);
-                       do {
-                           System.out.print("Please enter state: >>  ");
-                           state = scanner.nextLine();
-                       } while (inputConfirmation("Is this the right state? " + state) == false);
-                       do {
-                           System.out.print("Please enter postal code: >>  ");
-                           zip = scanner.nextLine();
-                       } while (inputConfirmation("Is this the right postal code? " + zip) == false);
-                    break;
-                case "gender":
-                    do {
-                        gender = promptMenu("Please select a gender:", Gender.Male.toString(),
-                                Gender.Female.toString(), Gender.Unspecified.toString(),
-                                Gender.Other.toString());
-
-                        flag = !inputConfirmation("Are you sure thats correct? Gender selected: " + gender);
-                    } while (flag);
-                    break;
-                case "finish":
-                    flag = false;
-                    break;
-            }
-
-            System.out.println("Please confirm your profile: " +
-                    "\n First Name: " + firstName +
-                    "\n Last Name: " + lastName +
-                    "\n Email Address: " + email +
-                    "\n Phone Number: " + phone +
-                    "\n Address: " + address +
-                    "\n City: " + city +
-                    "\n State: " + state +
-                    "\n Postal Code: " + zip
-                    );
-
-        } while(flag);
-        flag = true;
-
-        selectedCustomer.setFirstName(firstName);
-        selectedCustomer.setLastName(lastName);
-        selectedCustomer.setEmailAddress(email);
-        selectedCustomer.setPhoneNumber(phone);
-        selectedCustomer.setGender(Gender.valueOf(gender));
-        selectedCustomer.setAddress(address);
-        selectedCustomer.setCity(city);
-        selectedCustomer.setState(state);
-        selectedCustomer.setPostalCode(zip);
-
-        dataAccessor.updateCustomer(selectedCustomer);
+        dataAccessor.updateCustomer(selectedCustomer); //update the table
     }
 
-    private boolean deleteProfile() {
+    private Customer deleteCustomerProfile(Customer selectedCustomer) {
+        //prevent updating without a selected customer
+        if (selectedCustomer == null) {
+            log.error("Customer not selected!");
+            return null; //customer not selected
+        }
+
+        String email = selectedCustomer.getEmailAddress();
+
         //warn the user of deletion
         System.out.println("This will delete all associated entries!");
         //get confirmation
         if (inputConfirmation("Are you sure you want to delete the selected customer?")) {
             //attempt to remove the customer
-            boolean success = dataAccessor.removeCustomer(this.selectedCustomer.getCustomerID());
+            boolean success = dataAccessor.removeCustomer(selectedCustomer.getCustomerID());
             //if successful, "deselect" the customer and pet
             if (success) {
-                System.out.println("Customer " + " " + this.selectedCustomer.getEmailAddress() + " deleted.");
-                this.selectedCustomer = null;
+                System.out.println("Customer " + " " + email + " deleted.");
                 selectedPet = null;
-                return true;
+                return null;
             } else {
-                System.out.println("Customer " + " " + this.selectedCustomer.getEmailAddress() + " could not be deleted.");
-                log.error("Could not delete customer " + this.selectedCustomer.getEmailAddress() + "!");
-                return false;
+                System.out.println("Customer " + " " + email + " could not be deleted.");
+                log.error("Could not delete customer " + email + "!");
+                return selectedCustomer;
             }
         }
-        return false;
+        return selectedCustomer;
     }
 
-    private void printPetsFromCustomer() {
+    private void printPetsFromCustomer(Customer selectedCustomer) {
         ArrayList<Pet> pets = dataAccessor.getPetsFromCustomer(selectedCustomer);
-        printPetList(pets);
+        int size = pets.size();
+        printPets(pets.toArray(new Pet[size]));
     }
 
-    private void addPetToCustomer() {
-        boolean flag;
-        String petName;
-        String breed;
-        String gender = Gender.Unspecified.toString();
-        String behaviourDescription;
+    private void addPetToCustomer(Customer customer) {
+        Pet pet = promptPetInfo("Please fill out the pet's profile:", null);
 
-        do {
-            //get the pets name
-            flag = true;
-            do {
-                System.out.print("Pet's name: ");
-                petName = scanner.nextLine();
-                if (inputConfirmation("Are you sure this is correct? Entered Name: " + petName)) {
-                    flag = false;
-                } else {
-                    System.out.print("Try entering the name again! ");
-                }
-
-            } while (flag);
-
-            //get the pet's breed
-            flag = true;
-            do {
-                System.out.print("Pet's breed: ");
-                breed = scanner.nextLine();
-                if (inputConfirmation("Are you sure this is correct? Entered breed: " + breed)) {
-                    flag = false;
-                } else {
-                    System.out.print("Try entering the breed again! ");
-                }
-            } while (flag);
-
-            //get the pets gender
-            flag = true;
-            do {
-                gender = promptMenu("Select the pet's gender", "Male", "Female", "Other", "Unspecified");
-                if (inputConfirmation("Are you sure this is correct? Selected gender: " + gender)) {
-                    flag = false;
-                } else {
-                    System.out.print("Try selecting the gender again! ");
-                }
-            } while (flag);
-
-            //get the pet's description
-            flag = true;
-            do {
-                System.out.print("Pet's behaviour description: ");
-                behaviourDescription = scanner.nextLine();
-                if (inputConfirmation("Are you sure this is correct? Entered description: " + behaviourDescription)) {
-                    flag = false;
-                } else {
-                    System.out.print("Try entering the behaviour description again! ");
-                }
-            } while (flag);
-
-            System.out.println("Pet Profile: " +
-                    "\n Name: " + petName +
-                    "\n Breed: " + breed +
-                    "\n Gender: " + gender +
-                    "\n Behaviour Description: " + behaviourDescription);
-
-        } while (inputConfirmation("Is this correct? ") == false);
-
-        Pet pet = new Pet(petName, breed, Gender.valueOf(gender), behaviourDescription);
-        dataAccessor.addPet(selectedCustomer, pet);
+        if (pet != null) {
+            if (dataAccessor.addPet(customer, pet)) {
+                log.info("Pet " + pet.getName() + " added successfully");
+            }
+        }
     }
 
     //endregion
@@ -821,7 +463,6 @@ public class CommandInterface implements Interface{
         System.out.print("Examples (Email, id) >> ");
         String input = scanner.nextLine().toLowerCase();
 
-        pets.clear();
         if (StringUtils.isEmail(input)) {
             //detected an email address in the string, so get all pets from the associated email
             log.debug("Getting pets associated with email: " + input);
@@ -839,23 +480,21 @@ public class CommandInterface implements Interface{
         //pet array will always have at least one entry, even if it's null
         if (pets.size() == 1 && pets.get(0) == null || pets.size() == 0) {
             String message = "No pet with matching results: " + input;
-            log.debug(message);
-            System.out.println(message);
+            log.error(message);
             return;
         }
 
-        if (pets.size() > 0) {
-            printPetList(pets);
-        }
+        int size = pets.size();
+        Pet[] asArray = pets.toArray(new Pet[size]);
+        printPets(asArray);
+
     }
 
-    //Handles searching for customers
-    private void searchCustomers() {
+    private void promptSearchCustomers() {
         ArrayList<Customer> customers = new ArrayList<>();
         System.out.println("Please type in search criteria (leave blank for all): ");
         System.out.print("Examples (Email, id, first and/or last name) >> ");
         String input = scanner.nextLine().toLowerCase();
-
 
         if (StringUtils.isEmail(input)) {
             //detected the input is an email, add associated record
@@ -863,7 +502,7 @@ public class CommandInterface implements Interface{
         } else if (StringUtils.isInteger(input)) {
             //detected the input was an integer id, add associated record
             customers.add(dataAccessor.getCustomerByID(Integer.parseInt(input)));
-        } else if (input.isEmpty() == false) {
+        } else if (!input.isEmpty()) {
             //assuming input string is a name, try splitting it for first and last name entries;
             String[] name = input.split(" ");
             customers = dataAccessor.getCustomersByName(name); //get list of customers with the matching names
@@ -875,54 +514,314 @@ public class CommandInterface implements Interface{
         //prevent listing a single null value
         if (customers.size() == 1 && customers.get(0) == null) {
             String message = "No customer with matching results: " + input;
-            log.debug(message);
-            System.out.println(message);
+            log.warn(message);
             return;
         }
 
-        //print found records
-        if (customers.size() > 0) {
-            printCustomerList(customers);
+        int size = customers.size();
+        printCustomers(customers.toArray(new Customer[size]));
+    }
+
+    //endregion
+
+
+    //region Profile Prompts
+    //asks the user for pet info
+    public Pet promptPetInfo(String promptMessage, Pet pet) {
+        String name = null, breed = null, behaviourDescription = null;
+        Gender gender = Gender.Unspecified;
+
+        if (pet != null) {
+            name = pet.getName();
+            breed = pet.getBreed();
+            gender = pet.getGender();
+            behaviourDescription = pet.getBehaviourDescription();
         }
+
+        String[] profileOptions = {"Name", "Breed", "Gender", "Behaviour", "Finish"};
+        boolean flag = true;
+        while (flag) {
+            int command = promptMenu(promptMessage, profileOptions);
+            switch (command) {
+                case 0:
+                    name = promptPetName();
+                    break;
+                case 1:
+                    breed = promptString("Please enter the breed: >>  ");
+                    break;
+                case 2:
+                    gender = promptGender();
+                    break;
+                case 3:
+                    behaviourDescription = promptString("Please enter the behaviour description: >>  ");
+                    break;
+                default:
+                    if (name == null || name.isEmpty())
+                        log.warn("Name cannot be blank!");
+
+                    if (inputConfirmation("Are you sure you're finished?\n" +
+                            "Changes will be discarded if the following are not completed: Name")) {
+                        flag = false; //exit loop
+                    }
+                    break;
+            }
+
+            System.out.println("Pet Profile: " +
+                    "\n Name: " + name +
+                    "\n Breed: " + breed +
+                    "\n Gender: " + gender +
+                    "\n Behaviour Description: " + behaviourDescription);
+
+            if (flag)
+                System.out.println("Type 'Finish' to finish populating pet.");
+        }
+
+        return new Pet(name, breed, gender, behaviourDescription);
+    }
+    //asks the user for customer info
+    public Customer promptCustomerInfo(String promptMessage, Customer customer) {
+
+        String firstName = null, lastName = null, email = null, phone = null,
+                address = null, city = null, state = null, zip = null;
+        Gender gender = Gender.Unspecified;
+        if (customer != null) {
+            firstName = customer.getFirstName();
+            lastName = customer.getState();
+            email = customer.getEmailAddress();
+            phone = customer.getPhoneNumber();
+            address = customer.getAddress();
+            city = customer.getCity();
+            state = customer.getState();
+            zip = customer.getPostalCode();
+            gender = customer.getGender();
+        }
+
+        String[] profileOptions = {"Name", "Email", "Phone Number","Gender", "Address", "Finish"};
+        boolean flag = true;
+        while (flag) {
+            int input = promptMenu(promptMessage, profileOptions);
+            switch (input) {
+                case 0: //name
+                    String[] name = promptCustomerName();
+                    firstName = name[0];
+                    lastName = name[1];
+                    break;
+                case 1: //email
+                    email = promptCustomerEmail();
+                    break;
+                case 2: //phone number
+                    phone = promptCustomerPhone();
+                    break;
+                case 3: //gender
+                    gender = promptGender();
+                    break;
+                case 4: //address
+                    do {
+                        System.out.print("Please enter address: >>  ");
+                        address = scanner.nextLine();
+                    } while (!inputConfirmation("Is this the right address? " + address));
+                    do {
+                        System.out.print("Please enter city: >>  ");
+                        city = scanner.nextLine();
+                    } while (!inputConfirmation("Is this the right city? " + city));
+                    do {
+                        System.out.print("Please enter state: >>  ");
+                        state = scanner.nextLine();
+                    } while (!inputConfirmation("Is this the right state? " + state));
+                    do {
+                        System.out.print("Please enter postal code: >>  ");
+                        zip = scanner.nextLine();
+                    } while (!inputConfirmation("Is this the right postal code? " + zip));
+                    break;
+                default: //finish
+                    if ((firstName == null || firstName.isEmpty()) ||
+                            (lastName == null || lastName.isEmpty()) ||
+                            (email == null || email.isEmpty())) {
+                        log.error("First name, last name, and email cannot be empty!");
+                    }
+                    if (inputConfirmation("Are you sure you're finished?\n" +
+                            "Changes will be discarded if the following are not completed: Name & Email")) {
+                        flag = false; //exit loop
+                    }
+                    break;
+            }
+
+            System.out.println("\nCustomer Information: " +
+                    "\n First Name: " + firstName +
+                    "\n Last Name: " + lastName +
+                    "\n Email Address: " + email +
+                    "\n Phone Number: " + phone +
+                    "\n Gender: " + gender.toString() +
+                    "\n Address: " + address +
+                    "\n City: " + city +
+                    "\n State: " + state +
+                    "\n Postal Code: " + zip
+            );
+
+            if (flag)
+                System.out.println("Type 'Finish' to finish populating customer.");
+        }
+        log.info("Returning customer information");
+        return new Customer(firstName, lastName, email, phone, gender, address, city, state, zip);
+    }
+
+
+    //prompts the user for a pet name and returns only if it's not blank
+    private String promptPetName() {
+        boolean flag = true;
+        String name = null;
+        while(flag) {
+            System.out.print("Please enter the name: >>  ");
+            name = scanner.nextLine();
+            flag = name.isEmpty();
+            if (flag) {
+                log.warn("Name can't be blank!");
+            }
+        }
+        return name;
+    }
+    //prompts the user for input and simply returns it
+    private String promptString(String message) {
+        System.out.print("\n" + message);
+        return scanner.nextLine();
+    }
+
+    //prompts user for a first and last name and returns it as an array with 2 indexes
+    private String[] promptCustomerName() {
+        String[] name;
+        do {
+            System.out.print("\nPlease enter first and last name: >>  ");
+            String input = scanner.nextLine();
+            //separate first and last name to different strings
+            name = input.split(" ");
+            if (name.length != 2) {
+                System.out.println("Did not get first and last name! Try again.");
+            }
+        } while(name.length != 2);
+        return name;
+    }
+
+    //prompts user for an email address and returns accepted input
+    private String promptCustomerEmail() {
+        boolean flag = true;
+        String input = "", email;
+        while (flag) {
+            System.out.print("\nPlease enter in new email: >>  ");
+            input = scanner.nextLine();
+            System.out.print("Please confirm the new email: >>  ");
+            email = scanner.nextLine();
+
+            //do the email entries match
+            if (input.equalsIgnoreCase(email)) {
+                //are both entries emails
+                if (StringUtils.isEmail(input) && StringUtils.isEmail(email)) {
+                    //check if email already exists in registry
+                    Customer check = dataAccessor.getCustomerByEmail(input);
+                    if (check == null || check.equals(selectedCustomer)) {
+                        flag = false;
+                        log.info("Email " + email + " accepted!");
+                    } else
+                        log.error("Email is already in use!");
+                } else
+                    log.error("Not a valid email address! " + input);
+            } else
+                log.error("Emails do not match! " + input + " vs " + email);
+        }
+        return input;
+    }
+    //prompts user for a phone number and returns accepted input
+    private String promptCustomerPhone() {
+        boolean flag = true;
+        String input = "";
+        while (flag) {
+            System.out.print("\nPlease enter phone number: >>  ");
+            input = scanner.nextLine();
+
+            if (input.toCharArray().length < 15) {
+                flag = false;
+                log.info("Phone number accepted: " + input + "!");
+            } else
+                log.error("Phone number too long! Try again.");
+        }
+        return input;
+    }
+    //prompts user for a specified gender and returns it
+    private Gender promptGender() {
+        int selection;
+        String[] genderOptions = {
+                Gender.Unspecified.toString(),
+                Gender.Male.toString(),
+                Gender.Female.toString(),
+                Gender.Other.toString()
+        };
+
+        Gender gender;
+        selection = promptMenu("Please select a gender:", genderOptions);
+
+        switch (selection) {
+            case 1: //Male
+                gender = Gender.Male;
+                break;
+            case 2: //Female
+                gender = Gender.Female;
+                break;
+            case 3: //Other
+                gender = Gender.Other;
+                break;
+            default: //Unspecified
+                gender = Gender.Unspecified;
+                break;
+        }
+        return gender;
     }
     //endregion
 
-    //region Helpful methods
-    private void printCustomerList(ArrayList<Customer> list) {
-        System.out.println("\n---------------------------------------------------------------------------------------------------------------------------------------");
-        list.forEach(x -> System.out.println(x));
-        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------");
+    //Handles printing customers
+    public static void printCustomers(Customer ...customers) {
+        //print found records
+        if (customers.length > 0) {
+            System.out.println("\n---------------------------------------------------------------------------------------------------------------------------------------");
+            for (Customer customer : customers)
+                System.out.println(customer);
+            System.out.println("---------------------------------------------------------------------------------------------------------------------------------------\n");
+        }
     }
-    private void printPetList(ArrayList<Pet> list) {
-        System.out.println("\n---------------------------------------------------------------------------------------------------------------------------------------");
-        list.forEach(x -> System.out.println(x));
-        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------");
+
+    //Handles printing pets
+    public static void printPets(Pet ...pets) {
+        //print found records
+        if (pets.length > 0) {
+            System.out.println("\n---------------------------------------------------------------------------------------------------------------------------------------");
+            for (Pet pet : pets)
+                System.out.println(pet);
+            System.out.println("---------------------------------------------------------------------------------------------------------------------------------------\n");
+        }
     }
 
     //prompts the user for a string input
-    private static String promptMenu(String message, String ...commandArgs) {
-
+    private static int promptMenu(String message, String ...commandArgs) {
         StringBuilder sb = new StringBuilder();
         sb.append("Options: ");
         for (int i =0; i < commandArgs.length; i++) {
+            if (i%3 == 0 && i > 0)
+                sb.append("\n          ");
             sb.append(String.format("%s [%d] ", commandArgs[i], i));
+
             if (i != commandArgs.length - 1) sb.append("| ");
         }
         String options = sb.toString();
 
         while (true) {
-            System.out.print(message + "\n " + options + "\n >>  ");
+            System.out.print("\n" + message + "\n " + options + "\n >>  ");
             String prompt = scanner.nextLine().toLowerCase();
-            int promptAsInt = -1;
-            try {
-                promptAsInt = Integer.valueOf(prompt);
-            } catch (Exception e) { }
+            int command = StringUtils.isInteger(prompt) ? Integer.parseInt(prompt) : -1;
 
-            for (int i = 0; i <= commandArgs.length; i++) {
-                if (prompt.equalsIgnoreCase(commandArgs[i]) || promptAsInt == i)
+            for (int i = 0; i < commandArgs.length; i++) {
+                if (prompt.equalsIgnoreCase(commandArgs[i]) || command == i)
                 {
                     log.debug("Prompt Confirmed: " + commandArgs[i]);
-                    return commandArgs[i];
+                    //return commandArgs[i]; return the argument
+                    return i; //return the corresponding number for the option
                 }
             }
             System.out.println("Unrecognized Command > " + prompt + ". Try again!");
@@ -936,24 +835,15 @@ public class CommandInterface implements Interface{
             String input = scanner.nextLine().toLowerCase();
 
             switch (input) {
-                case "y":
-                case "Y":
-                case "Yes":
-                case "yes":
-                case "0":
+                case "y": case "yes": case "0":
                     log.debug("User selected 'Yes' to " + message);
                     return true;
-                case "n":
-                case "N":
-                case "No":
-                case "no":
-                case "1":
+                case "n": case "no": case "1":
                     log.debug("User selected 'No' to " + message);
                     return false;
             }
         }
     }
-    //endregion
 
 
 }

@@ -26,7 +26,7 @@ public interface DOA {
     boolean removePetsFromCustomer(Customer customer);
     boolean updatePet(Pet pet);
 
-
+    void close();
 
 
 

@@ -10,7 +10,4 @@ public class PetManagement {
         Config config = new Config(args);
         config.getAppInterface().run();
     }
-
-
-
 }

@@ -68,8 +68,12 @@ public class MySQL_DOA implements DOA {
     public MySQL_DOA() {
         Connection c = null;
         try {
-            c = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "");
-        } catch (SQLException e ) {
+
+            Class dbDriver = Class.forName("com.mysql.jdbc.Driver");
+            String jdbcURL = "jdbc:mysql://localhost:3306/?useSSL=true&autoReconnect=true";
+
+            c = DriverManager.getConnection(jdbcURL, "root", "");
+        } catch (SQLException | ClassNotFoundException e ) {
 
         }
         connection = c;
@@ -373,4 +377,14 @@ public class MySQL_DOA implements DOA {
         }
         return flag;
     }
+
+    @Override
+    public void close() {
+        try {
+            if (connection !=null) connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

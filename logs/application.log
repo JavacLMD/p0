@@ -441,3 +441,70 @@
 2021-08-03 22:15:36.661 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - User selected 'Yes' to Are you sure you want to delete the selected customer?
 2021-08-03 22:15:42.670 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Search
 2021-08-03 22:15:44.432 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Customers
+2021-08-04 14:18:24.119 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Search
+2021-08-04 14:18:25.759 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Customers
+2021-08-04 14:18:30.047 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Customers
+2021-08-04 14:18:41.364 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Customers
+2021-08-04 14:18:52.668 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Pets
+2021-08-04 14:18:54.835 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Getting pet by id: 0
+2021-08-04 14:18:54.852 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - No pet with matching results: 0
+2021-08-04 14:19:02.122 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Pets
+2021-08-04 14:19:04.109 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Getting pet by id: 1
+2021-08-04 14:19:04.111 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - No pet with matching results: 1
+2021-08-04 14:20:37.419 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Pets
+2021-08-04 14:20:41.559 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Getting pets associated with email: dorscherl@gmail.com
+2021-08-04 14:20:44.678 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Pets
+2021-08-04 14:20:53.897 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Getting pet by id: 2
+2021-08-04 14:25:05.433 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Search
+2021-08-04 14:25:07.591 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Pets
+2021-08-04 14:25:10.116 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Getting pet by id: 2
+2021-08-04 14:25:26.502 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Pets
+2021-08-04 14:25:27.194 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Getting pet by id: 1
+2021-08-04 14:25:27.195 [main] ERROR com.github.JavacLMD.projectZero.view.CommandInterface - 
+No pet with matching results: 1
+2021-08-04 14:25:41.839 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Select
+2021-08-04 14:25:43.349 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Pets
+2021-08-04 14:26:40.488 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Select
+2021-08-04 14:26:42.208 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Pets
+2021-08-04 14:28:58.783 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Select
+2021-08-04 14:29:00.170 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Pets
+2021-08-04 14:30:07.309 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Print
+2021-08-04 14:30:11.060 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Delete Pet
+2021-08-04 14:30:17.210 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - User selected 'No' to Are you sure you want to delete the selected pet?
+2021-08-04 14:31:16.099 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Update Pet
+2021-08-04 14:31:29.871 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Breed
+2021-08-04 14:32:23.287 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Select
+2021-08-04 14:32:24.881 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Pets
+2021-08-04 14:32:47.954 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Update Pet
+2021-08-04 14:32:58.877 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Breed
+2021-08-04 14:33:06.180 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Finish
+2021-08-04 14:33:12.151 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - User selected 'No' to Are you sure you're finished?
+Changes will be discarded if the following are not completed: Name
+2021-08-04 14:33:16.658 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Finish
+2021-08-04 14:33:19.295 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - User selected 'Yes' to Are you sure you're finished?
+Changes will be discarded if the following are not completed: Name
+2021-08-04 14:33:19.298 [main] INFO  com.github.JavacLMD.projectZero.view.CommandInterface - Pet profile: Sadie updated successfully!
+2021-08-04 14:33:28.804 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Print
+2021-08-04 14:33:32.357 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Exit
+2021-08-04 14:33:34.507 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Customers
+2021-08-04 14:33:48.719 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Print Pets
+2021-08-04 14:33:58.142 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Print Profile
+2021-08-04 14:34:04.633 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Update Profile
+2021-08-04 14:36:53.069 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Select
+2021-08-04 14:36:54.951 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Customers
+2021-08-04 14:37:13.307 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Update Profile
+2021-08-04 14:37:33.210 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Gender
+2021-08-04 14:37:35.686 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Male
+2021-08-04 14:37:38.486 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Finish
+2021-08-04 14:37:38.486 [main] ERROR com.github.JavacLMD.projectZero.view.CommandInterface - First name, last name, and email cannot be empty!
+2021-08-04 14:37:43.943 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - User selected 'Yes' to Are you sure you're finished?
+Changes will be discarded if the following are not completed: Name & Email
+2021-08-04 14:37:43.943 [main] INFO  com.github.JavacLMD.projectZero.view.CommandInterface - Returning customer information
+2021-08-04 14:37:43.953 [main] ERROR com.github.JavacLMD.projectZero.controller.MySQL_DOA - java.sql.SQLIntegrityConstraintViolationException: Column 'LastName' cannot be null
+2021-08-04 14:39:40.051 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Print Profile
+2021-08-04 14:39:45.687 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Exit
+2021-08-04 14:39:47.173 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Exit
+2021-08-04 14:39:47.173 [main] INFO  com.github.JavacLMD.projectZero.view.CommandInterface - Exited Select Function!
+2021-08-04 14:39:49.469 [main] DEBUG com.github.JavacLMD.projectZero.view.CommandInterface - Prompt Confirmed: Quit
+2021-08-04 14:42:54.239 [main] ERROR com.github.JavacLMD.projectZero.controller.MySQL_DOA - java.sql.SQLNonTransientConnectionException: No operations allowed after connection closed.
+2021-08-04 14:43:21.117 [main] ERROR com.github.JavacLMD.projectZero.controller.MySQL_DOA - java.sql.SQLNonTransientConnectionException: No operations allowed after connection closed.

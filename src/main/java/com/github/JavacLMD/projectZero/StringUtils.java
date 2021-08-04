@@ -1,10 +1,9 @@
 package com.github.JavacLMD.projectZero;
-
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringUtils {
 
+    //checks if a string is an email
     public static boolean isEmail(String text) {
         try {
             String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." +
@@ -21,6 +20,7 @@ public class StringUtils {
         }
     }
 
+    //checks if a string is an integer
     public static boolean isInteger(String text) {
         try {
             Integer.parseInt(text);
@@ -29,6 +29,5 @@ public class StringUtils {
             return false;
         }
     }
-
 
 }
