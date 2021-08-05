@@ -1,6 +1,7 @@
 package com.github.JavacLMD.projectZero.controller;
 
-import com.github.JavacLMD.projectZero.model.*;
+import com.github.JavacLMD.projectZero.model.Customer;
+import com.github.JavacLMD.projectZero.model.Pet;
 
 import java.util.ArrayList;
 

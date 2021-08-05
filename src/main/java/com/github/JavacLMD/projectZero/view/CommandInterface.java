@@ -1,8 +1,10 @@
 package com.github.JavacLMD.projectZero.view;
 
-import com.github.JavacLMD.projectZero.StringUtils;
+import com.github.JavacLMD.StringUtils;
 import com.github.JavacLMD.projectZero.controller.DOA;
-import com.github.JavacLMD.projectZero.model.*;
+import com.github.JavacLMD.projectZero.model.Customer;
+import com.github.JavacLMD.projectZero.model.Gender;
+import com.github.JavacLMD.projectZero.model.Pet;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,7 +13,7 @@ import java.util.Scanner;
 
 public class CommandInterface implements Interface{
     private static final Scanner scanner = new Scanner(System.in);
-    private static final Logger log = LogManager.getLogger(CommandInterface.class);
+    private static final Logger log = LogManager.getLogger(CommandInterface.class.getName());
 
     private final DOA dataAccessor;
     private Customer selectedCustomer;
@@ -214,9 +216,10 @@ public class CommandInterface implements Interface{
     }
 
     private Pet promptUpdatePet(Pet selectedPet) {
+
+
         Pet pet = promptPetInfo("What do you want to update?", selectedPet);
         if (selectedPet != null) {
-
             selectedPet.setName(pet.getName());
             selectedPet.setBreed(pet.getBreed());
             selectedPet.setGender(pet.getGender());
@@ -281,7 +284,6 @@ public class CommandInterface implements Interface{
         return selectedPet;
     }
 
-
     //region Selection Stuff
     private void handleCustomerSelection() {
         selectedCustomer = selectCustomer();
@@ -302,6 +304,7 @@ public class CommandInterface implements Interface{
                     break;
                 case 1: //"delete profile":
                     selectedCustomer = deleteCustomerProfile(selectedCustomer);
+                    if (selectedCustomer == null) selectionFlag = false;
                     break;
                 case 2: //"print profile":
                     printCustomers(selectedCustomer);
@@ -316,7 +319,8 @@ public class CommandInterface implements Interface{
                     selectedPet = removePetFromCustomer(selectedCustomer);
                     break;
                 case 6: //"update pet":
-                    selectedPet = promptUpdatePet(selectedPet);
+                    Pet customerPet = promptSelectCustomerPet(selectedCustomer);
+                    selectedPet = promptUpdatePet(customerPet);
                     break;
                 default: //exit
                     selectionFlag = false;
@@ -524,7 +528,6 @@ public class CommandInterface implements Interface{
 
     //endregion
 
-
     //region Profile Prompts
     //asks the user for pet info
     public Pet promptPetInfo(String promptMessage, Pet pet) {
@@ -566,7 +569,7 @@ public class CommandInterface implements Interface{
                     break;
             }
 
-            System.out.println("Pet Profile: " +
+            System.out.println("\nPet Profile: " +
                     "\n Name: " + name +
                     "\n Breed: " + breed +
                     "\n Gender: " + gender +

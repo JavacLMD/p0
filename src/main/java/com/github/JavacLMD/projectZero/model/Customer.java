@@ -8,7 +8,7 @@ import java.util.Objects;
 
 
 public class Customer {
-    private static final Logger log = LogManager.getLogger(Customer.class);
+    private static final Logger log = LogManager.getLogger(Customer.class.getName());
 
     //Not Null Values
     private Integer id;
@@ -121,6 +121,8 @@ public class Customer {
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
+
+    public String getFullName() {return firstName + " " + lastName;}
 
 
     @Override

@@ -1,4 +1,4 @@
-package com.github.JavacLMD.projectZero;
+package com.github.JavacLMD;
 import java.util.regex.Pattern;
 
 public class StringUtils {

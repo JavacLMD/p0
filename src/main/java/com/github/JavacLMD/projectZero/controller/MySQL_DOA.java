@@ -1,17 +1,16 @@
 package com.github.JavacLMD.projectZero.controller;
 
+import com.github.JavacLMD.projectZero.model.Pet;
 import com.github.JavacLMD.projectZero.model.Customer;
 import com.github.JavacLMD.projectZero.model.Gender;
-import com.github.JavacLMD.projectZero.model.Pet;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class MySQL_DOA implements DOA {
-    private static Logger log = LogManager.getLogger(MySQL_DOA.class);
+    private static Logger log = LogManager.getLogger(MySQL_DOA.class.getName());
 
     private static final String CREATE_CUSTOMERS_TABLE = "CREATE TABLE IF NOT EXISTS customers (" +
             "CustomerID INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT, " +
@@ -69,7 +68,7 @@ public class MySQL_DOA implements DOA {
         Connection c = null;
         try {
 
-            Class dbDriver = Class.forName("com.mysql.jdbc.Driver");
+            Class dbDriver = Class.forName("com.mysql.cj.jdbc.Driver");
             String jdbcURL = "jdbc:mysql://localhost:3306/?useSSL=true&autoReconnect=true";
 
             c = DriverManager.getConnection(jdbcURL, "root", "");
@@ -90,7 +89,6 @@ public class MySQL_DOA implements DOA {
         } catch (SQLException e) {
 
         }
-
     }
 
 
@@ -259,9 +257,10 @@ public class MySQL_DOA implements DOA {
 
             statement.execute();
             flag = true;
+            log.debug("Customer " + customer.getCustomerID() + ": " + customer.getFirstName() + " " + customer.getLastName() + " updated to " + connection);
 
         } catch (SQLException e) {
-            log.error(e);
+            log.error("Customer " + customer.getCustomerID() + ": " + customer.getFirstName() + " " + customer.getLastName() + " failed to update to " + connection + "\n" + e.getMessage());
             flag = false;
         }
         return flag;
@@ -276,8 +275,11 @@ public class MySQL_DOA implements DOA {
             while (set.next())
                 pets.add(getPetFromSet(set));
 
+            if (pets.size() == 1 && pets.get(0) == null) pets.clear();
+
+            log.debug("Gathered all pets (" + pets.size() + ") from " + connection);
         } catch (SQLException e) {
-            log.error(e);
+            log.error("Could not gather pets from " + connection);
         }
         return pets;
     }
@@ -291,6 +293,9 @@ public class MySQL_DOA implements DOA {
             while (set.next())
                 pets.add(getPetFromSet(set));
 
+            if (pets.size() == 1 && pets.get(0) == null) pets.clear();
+
+            log.debug("Gathered all " + customer.getCustomerID() + ":" + customer.getFullName() + "'s pets (" + pets.size() + ") from " + connection);
         } catch (SQLException e) {
             log.error(e);
         }
@@ -305,6 +310,8 @@ public class MySQL_DOA implements DOA {
             ResultSet set = statement.executeQuery();
             if (set.next())
                 pet = getPetFromSet(set);
+
+            log.debug("Got ");
 
         } catch (SQLException e) {
             log.error(e);
