@@ -8,6 +8,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Set;
 
 public class MySQL_DOA implements DOA {
     private static Logger log = LogManager.getLogger(MySQL_DOA.class.getName());
@@ -90,7 +92,6 @@ public class MySQL_DOA implements DOA {
 
         }
     }
-
 
     private static Customer getCustomerFromSet(ResultSet set) {
         Customer c = null;
